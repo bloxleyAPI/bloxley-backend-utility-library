@@ -1,0 +1,123 @@
+# Binaries for programs and plugins
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Output of the Go build
+*.out
+*.test
+*.log
+
+# Test binary, coverage data, and related files
+*.test
+*.coverprofile
+*.cov
+
+# Directory for IDE specific settings (Cursor IDE)
+.cursor/
+.idea/
+.vscode/
+
+# Go dependency directories and files
+vendor/
+Gopkg.lock
+Gopkg.toml
+go.sum
+
+# Environment variables and secrets
+.env.*
+
+# Node modules if using any frontend within the project
+**/node_modules/
+
+# Logs and crash reports
+*.log
+*.pid
+*.pid.lock
+
+# Compiled object files
+*.o
+*.a
+
+# Build and cache directories
+bin/
+pkg/
+cache/
+
+# Temporary files and directories
+*.tmp
+*.swp
+*.swo
+*.DS_Store
+
+# Cloud deployment and config files
+.gcloud/
+*.tfstate
+*.tfstate.backup
+.terraform/
+*.bak
+*~
+
+# IDE specific backups and hidden files
+*.orig
+*.bak
+*.swp
+*.un~
+.*.swp
+
+# Coverage data files
+coverage.out
+.coverage
+
+# Ignore database files
+*.db
+*.sqlite3
+
+# GoLand / IntelliJ IDEA specific files
+.idea/
+
+# Editor backups (common)
+*~
+
+# Ignore executable files and binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# GitHub Actions secrets file (optional)
+.github/
+
+
+# Ignore specific Google Cloud Platform artifacts
+.gcloudignore
+config.yaml  # If using gcloud configuration files
+
+# Ignore Cursor IDE-specific temporary files
+cursor-settings.json
+
+# Ignore Terraform state files for GCP deployments
+*.tfstate
+*.tfstate.backup
+
+# Ignore kubeconfigs if using Kubernetes
+.kube/
+
+# Temporary folders and cache for web frameworks or middleware
+tmp/
+debug/
+sessions/
+uploads/
+
+
+#Ide
+**/*.code-workspace
+
+#Macos
+**/.DS_Store
+.DS_Store
+
+#ENV
+.env
