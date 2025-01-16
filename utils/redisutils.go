@@ -1,12 +1,12 @@
 package utilslib
 
 import (
-	"bloxley-backend-utility-library/constants"
 	"context"
 	"errors"
 	"fmt"
 	"sync"
 
+	"github.com/bloxleyAPI/bloxley-backend-utility-library/constants"
 	"github.com/redis/go-redis/v9"
 )
 
