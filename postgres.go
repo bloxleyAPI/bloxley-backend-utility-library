@@ -48,8 +48,7 @@ func InitializePostgresPool(ctx context.Context, config PostgresConfig) *pgxpool
 		// Create a new connection pool
 		pgPoolInstance, err = pgxpool.New(ctx, databaseURL)
 		if err != nil {
-			err = fmt.Errorf("failed to connect to database: %w", err)
-			return
+			panic(fmt.Sprintf("Failed to connect to Postgres: %v", err))
 		}
 	})
 
