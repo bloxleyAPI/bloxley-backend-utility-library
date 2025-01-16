@@ -1,4 +1,4 @@
-module bloxley-backend-utility-library
+module github.com/bloxleyAPI/bloxley-backend-utility-library
 
 go 1.22
 
