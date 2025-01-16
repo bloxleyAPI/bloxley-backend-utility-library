@@ -1,4 +1,4 @@
-package utilslib
+package util
 
 import (
 	"log"
