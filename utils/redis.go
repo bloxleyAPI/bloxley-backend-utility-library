@@ -1,4 +1,4 @@
-package util
+package utils
 
 import (
 	"context"
@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/bloxleyAPI/bloxley-backend-utility-library/constant"
+	"github.com/bloxleyAPI/bloxley-backend-utility-library/constants"
 	"github.com/redis/go-redis/v9"
 )
 
@@ -62,10 +62,10 @@ type MBanqToken struct {
 // GetMBanqToken fetches a JWT token stored under the key in Redis.
 // Returns the token wrapped in an MBanqToken struct, or an error if it isn't found or if a Redis error occurs.
 func GetMBanqToken(ctx context.Context, client *redis.Client) (MBanqToken, error) {
-	token, err := client.Get(ctx, constant.MbanqTokenKey).Result()
+	token, err := client.Get(ctx, constants.MbanqTokenKey).Result()
 	if err == redis.Nil {
 		// Key does not exist
-		return MBanqToken{}, errors.New(constant.MbanqTokenKey + " not found in Redis")
+		return MBanqToken{}, errors.New(constants.MbanqTokenKey + " not found in Redis")
 	} else if err != nil {
 		// Some other Redis-related error
 		return MBanqToken{}, err
