@@ -119,5 +119,11 @@ uploads/
 **/.DS_Store
 .DS_Store
 
-#ENV
+# Environment files
+env
+env.local
+env/
 .env
+.env.local
+.env.*.local
+
