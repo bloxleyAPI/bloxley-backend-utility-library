@@ -16,5 +16,5 @@ const (
 // Environment variable keys
 const (
 	AppPortKey = "APP_PORT"
-	EnvKey     = "ENV"
+	AppEnvKey  = "ENV"
 )
