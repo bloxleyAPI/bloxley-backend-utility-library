@@ -6,7 +6,7 @@ type AppConfig struct {
 }
 
 // Config holds all required environment variables.
-type DBConfig struct {
+type PostgresConfig struct {
 	DBUser  string
 	DBPass  string
 	DBHost  string
