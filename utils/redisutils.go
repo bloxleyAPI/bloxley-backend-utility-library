@@ -54,18 +54,23 @@ func InitializeRedis(config RedisConfig) *redis.Client {
 	return clientInstance
 }
 
-// GetMBanqToken fetches a JWT token stored under the "mbanq_token" key in Redis.
-// Returns the token, or an error if it isn't found or if a Redis error occurs.
-func GetMBanqToken(ctx context.Context, client *redis.Client) (string, error) {
+// MBanqToken represents the structure of the token stored in Redis.
+type MBanqToken struct {
+	Token string `json:"token"`
+}
+
+// GetMBanqToken fetches a JWT token stored under the key in Redis.
+// Returns the token wrapped in an MBanqToken struct, or an error if it isn't found or if a Redis error occurs.
+func GetMBanqToken(ctx context.Context, client *redis.Client) (MBanqToken, error) {
 	token, err := client.Get(ctx, constants.MbanqTokenKey).Result()
 	if err == redis.Nil {
 		// Key does not exist
-		return "", errors.New("mbanq_token not found in Redis")
+		return MBanqToken{}, errors.New(constants.MbanqTokenKey + " not found in Redis")
 	} else if err != nil {
 		// Some other Redis-related error
-		return "", err
+		return MBanqToken{}, err
 	}
 
-	// Return the token value
-	return token, nil
+	// Return the token wrapped in an MBanqToken struct
+	return MBanqToken{Token: token}, nil
 }
