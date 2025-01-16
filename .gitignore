@@ -23,7 +23,6 @@
 vendor/
 Gopkg.lock
 Gopkg.toml
-go.sum
 
 # Environment variables and secrets
 .env.*
