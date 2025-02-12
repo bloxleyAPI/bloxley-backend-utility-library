@@ -25,6 +25,7 @@ var (
 //	    DBPort:  "5432",
 //	    DBName:  "database",
 //	    SSLMode: "disable",
+//	    DBTimezone: "UTC",
 //	}
 //	pool, err := utilslibs.InitializePostgresPool(context.Background(), cfg)
 //	if err != nil {
@@ -36,13 +37,14 @@ func InitializePostgresPool(ctx context.Context, config PostgresConfig) *pgxpool
 	pgOnce.Do(func() {
 		// Build the connection string
 		databaseURL := fmt.Sprintf(
-			"postgres://%s:%s@%s:%s/%s?sslmode=%s",
+			"postgres://%s:%s@%s:%s/%s?sslmode=%s&options=-c%%20timezone=%s",
 			config.DBUser,
 			config.DBPass,
 			config.DBHost,
 			config.DBPort,
 			config.DBName,
 			config.SSLMode,
+			config.DBTimezone,
 		)
 
 		// Create a new connection pool
