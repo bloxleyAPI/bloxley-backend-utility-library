@@ -13,7 +13,7 @@ func StringToPointer(s string) *string {
 	return &s
 }
 
-// contains returns true if slice s contains the element e.
+// Contains returns true if slice s contains the element e.
 func Contains[T comparable](s []T, e T) bool {
 	for _, v := range s {
 		if v == e {
