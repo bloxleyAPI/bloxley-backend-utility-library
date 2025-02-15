@@ -33,7 +33,7 @@ func Contains[T comparable](s []T, e T) bool {
 }
 
 // String to Dob 2006-01-02
-func StringToDob(s string) time.Time {
+func StringToDobMust(s string) time.Time {
 	t, err := time.Parse("2006-01-02", s)
 	if err != nil {
 		panic(err)
