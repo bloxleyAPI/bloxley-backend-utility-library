@@ -1,5 +1,9 @@
 package utilslibs
 
+import (
+	"time"
+)
+
 // Helper function to dereference a *string safely
 func SafeString(s *string) string {
 	if s == nil {
@@ -26,4 +30,13 @@ func Contains[T comparable](s []T, e T) bool {
 		}
 	}
 	return false
+}
+
+// String to Dob 2006-01-02
+func StringToDob(s string) time.Time {
+	t, err := time.Parse("2006-01-02", s)
+	if err != nil {
+		panic(err)
+	}
+	return t
 }
