@@ -7,11 +7,10 @@ type AppConfig struct {
 
 // Config holds all required environment variables.
 type PostgresConfig struct {
-	DBUser     string
-	DBPass     string
-	DBHost     string
-	DBPort     string
-	DBName     string
-	SSLMode    string
-	DBTimezone string
+	DBUser  string
+	DBPass  string
+	DBHost  string
+	DBPort  string
+	DBName  string
+	SSLMode string
 }

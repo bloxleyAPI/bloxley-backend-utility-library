@@ -37,14 +37,13 @@ func InitializePostgresPool(ctx context.Context, config PostgresConfig) *pgxpool
 	pgOnce.Do(func() {
 		// Build the connection string
 		databaseURL := fmt.Sprintf(
-			"postgres://%s:%s@%s:%s/%s?sslmode=%s&options=-c%%20timezone=%s",
+			"postgres://%s:%s@%s:%s/%s?sslmode=%s",
 			config.DBUser,
 			config.DBPass,
 			config.DBHost,
 			config.DBPort,
 			config.DBName,
 			config.SSLMode,
-			config.DBTimezone,
 		)
 
 		// Create a new connection pool
