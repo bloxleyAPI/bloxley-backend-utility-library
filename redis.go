@@ -28,13 +28,11 @@ var (
 //	err := client.Set(context.Background(), "key", "value", 0).Err()
 func InitializeRedis(config RedisConfig) *redis.Client {
 	once.Do(func() {
-		fmt.Printf("[utilslib] Connecting to Redis at %s (DB %d)\n", config.Address, config.DB)
+		fmt.Printf("[utilslib] Connecting to Redis at %s (DB %s)\n", config.Address, config.Port)
 
 		clientInstance = redis.NewClient(&redis.Options{
 			Addr:     config.Address + ":" + config.Port,
-			Username: config.User,
 			Password: config.Password,
-			DB:       config.DB,
 		})
 
 		// Optionally, you could do a quick ping to verify the connection:

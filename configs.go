@@ -20,7 +20,5 @@ type PostgresConfig struct {
 type RedisConfig struct {
 	Address  string // "host:port" e.g. "localhost" or "10.0.0.5"
 	Port     string // Redis port (e.g. 6379)
-	User     string // Redis username (can be empty if none)
 	Password string // Redis password (can be empty if none)
-	DB       int    // Redis DB index (e.g. 0, 1, 2, ...)
 }
