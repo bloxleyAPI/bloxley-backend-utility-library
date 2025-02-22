@@ -31,7 +31,7 @@ func InitializeRedis(config RedisConfig) *redis.Client {
 		fmt.Printf("[utilslib] Connecting to Redis at %s (DB %d)\n", config.Address, config.DB)
 
 		clientInstance = redis.NewClient(&redis.Options{
-			Addr:     config.Address,
+			Addr:     config.Address + ":" + config.Port,
 			Username: config.User,
 			Password: config.Password,
 			DB:       config.DB,
