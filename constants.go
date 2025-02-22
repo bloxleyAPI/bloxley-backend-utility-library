@@ -10,6 +10,14 @@ const (
 	SSLModeKey = "DB_SSLMODE"
 )
 
+// ENV variable keys
+const (
+	RedisAddressKey  = "REDIS_ADDRESS"
+	RedisPasswordKey = "REDIS_PASSWORD"
+	RedisUserKey     = "REDIS_USER"
+	RedisDBKey       = "REDIS_DB"
+)
+
 // Environment variable keys
 const (
 	AppPortKey = "APP_PORT"
