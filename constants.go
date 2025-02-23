@@ -14,7 +14,6 @@ const (
 const (
 	RedisAddressKey  = "REDIS_ADDRESS"
 	RedisPasswordKey = "REDIS_PASSWORD"
-	RedisUserKey     = "REDIS_USER"
 	RedisDBKey       = "REDIS_DB"
 	RedisPortKey     = "REDIS_PORT"
 )
