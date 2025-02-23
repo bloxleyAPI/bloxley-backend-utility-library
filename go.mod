@@ -4,7 +4,10 @@ go 1.22
 
 toolchain go1.23.4
 
-require github.com/redis/go-redis/v9 v9.7.0
+require (
+	github.com/google/uuid v1.6.0
+	github.com/redis/go-redis/v9 v9.7.0
+)
 
 require (
 	github.com/jackc/pgpassfile v1.0.0 // indirect
