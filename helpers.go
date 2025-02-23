@@ -1,7 +1,11 @@
 package utilslibs
 
 import (
+	"context"
+	"errors"
 	"time"
+
+	"github.com/google/uuid"
 )
 
 // Helper function to dereference a *string safely
@@ -39,4 +43,16 @@ func StringToDobMust(s string) time.Time {
 		panic(err)
 	}
 	return t
+}
+
+// GetMustPersonID returns the person_id from the context.
+func GetMustPersonID(c context.Context, key string) uuid.UUID {
+	personID := c.Value(key).(string)
+
+	if personID == "" {
+		panic(errors.New("person_id not found in context"))
+	}
+	personIDUUID := uuid.MustParse(personID)
+	return personIDUUID
+
 }
