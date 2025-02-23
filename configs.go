@@ -21,4 +21,5 @@ type RedisConfig struct {
 	Address  string // "host:port" e.g. "localhost" or "10.0.0.5"
 	Port     string // Redis port (e.g. 6379)
 	Password string // Redis password (can be empty if none)
+	DB       int    // Redis database number
 }

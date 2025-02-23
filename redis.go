@@ -33,6 +33,7 @@ func InitializeRedis(config RedisConfig) *redis.Client {
 		clientInstance = redis.NewClient(&redis.Options{
 			Addr:     config.Address + ":" + config.Port,
 			Password: config.Password,
+			DB:       config.DB,
 		})
 
 		// Optionally, you could do a quick ping to verify the connection:
