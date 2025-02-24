@@ -31,3 +31,12 @@ func GetIntEnvOrFail(key string) int {
 
 	return intVal
 }
+
+// getEnvOrEmpty is a helper that returns an env variable or an empty string if it's missing.
+func GetEnvOrEmpty(key string) string {
+	val, ok := os.LookupEnv(key)
+	if !ok || val == "" {
+		return ""
+	}
+	return val
+}
