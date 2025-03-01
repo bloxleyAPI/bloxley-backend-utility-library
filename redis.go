@@ -36,6 +36,10 @@ func InitializeRedis(config RedisConfig) *redis.Client {
 			DB:       config.DB,
 		})
 
+		if clientInstance == nil {
+			panic("Failed to create Redis client")
+		}
+
 		// Optionally, you could do a quick ping to verify the connection:
 		if err := clientInstance.Ping(context.Background()).Err(); err != nil {
 			panic(fmt.Sprintf("Failed to connect to Redis: %v", err))
