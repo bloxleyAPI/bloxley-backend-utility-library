@@ -50,6 +50,8 @@ func InitializePostgresPool(ctx context.Context, config PostgresConfig) *pgxpool
 		pgPoolInstance, err = pgxpool.New(ctx, databaseURL)
 		if err != nil {
 			panic(fmt.Sprintf("Failed to connect to Postgres: %v", err))
+		} else {
+			fmt.Println("Connected to Postgres")
 		}
 	})
 
