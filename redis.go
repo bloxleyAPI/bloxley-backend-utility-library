@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"sync"
+	"time"
 
 	"github.com/redis/go-redis/v9"
 )
@@ -28,7 +29,7 @@ var (
 //	err := client.Set(context.Background(), "key", "value", 0).Err()
 func InitializeRedis(config RedisConfig) *redis.Client {
 	once.Do(func() {
-		fmt.Printf("[utilslib] Connecting to Redis at %s (DB %s)\n", config.Address, config.Port)
+		fmt.Printf("[utilslib] Connecting to Redis at %s\n", config.Address)
 
 		clientInstance = redis.NewClient(&redis.Options{
 			Addr:     config.Address + ":" + config.Port,
@@ -40,8 +41,11 @@ func InitializeRedis(config RedisConfig) *redis.Client {
 			panic("Failed to create Redis client")
 		}
 
+		ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+		defer cancel()
+
 		// Optionally, you could do a quick ping to verify the connection:
-		if err := clientInstance.Ping(context.Background()).Err(); err != nil {
+		if err := clientInstance.Ping(ctx).Err(); err != nil {
 			panic(fmt.Sprintf("Failed to connect to Redis: %v", err))
 		} else {
 			fmt.Println("Connected to Redis")
