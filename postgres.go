@@ -53,8 +53,33 @@ func InitializePostgresPool(ctx context.Context, config PostgresConfig) *pgxpool
 		} else {
 			fmt.Println("Connected to Postgres")
 		}
+
+		// Ping the database to ensure the connection is alive
+		if err := PingDB(ctx); err != nil {
+			panic(fmt.Sprintf("Failed to ping Postgres: %v", err))
+		}
 	})
 
 	// If pgOnce set up the pool successfully, poolInstance won't be nil (unless there was an error).
 	return pgPoolInstance
+}
+
+// PingDB pings the database to check if the connection is alive.
+func PingDB(ctx context.Context) error {
+	if pgPoolInstance == nil {
+		return fmt.Errorf("Postgres pool is not initialized")
+	}
+
+	conn, err := pgPoolInstance.Acquire(ctx)
+	if err != nil {
+		return fmt.Errorf("Failed to acquire connection: %v", err)
+	}
+	defer conn.Release()
+
+	if err := conn.Conn().Ping(ctx); err != nil {
+		return fmt.Errorf("Failed to ping database: %v", err)
+	}
+
+	fmt.Println("Database connection is alive")
+	return nil
 }
