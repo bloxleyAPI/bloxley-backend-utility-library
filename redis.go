@@ -29,12 +29,12 @@ var (
 //	err := client.Set(context.Background(), "key", "value", 0).Err()
 func InitializeRedis(config RedisConfig) *redis.Client {
 	once.Do(func() {
-		fmt.Printf("[utilslib] Connecting to Redis at %s\n", config.Address)
+		fmt.Printf("[utilslib] Connecting to Redis at %s\n", config.REDIS_ADDRESS)
 
 		clientInstance = redis.NewClient(&redis.Options{
-			Addr:     config.Address + ":" + config.Port,
-			Password: config.Password,
-			DB:       config.DB,
+			Addr:     config.REDIS_ADDRESS + ":" + config.REDIS_PORT,
+			Password: config.REDIS_PASSWORD,
+			DB:       config.REDIS_DB,
 		})
 
 		if clientInstance == nil {

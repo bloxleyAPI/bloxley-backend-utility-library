@@ -38,12 +38,12 @@ func InitializePostgresPool(ctx context.Context, config PostgresConfig) *pgxpool
 		// Build the connection string
 		databaseURL := fmt.Sprintf(
 			"postgres://%s:%s@%s:%s/%s?sslmode=%s",
-			config.DBUser,
-			config.DBPass,
-			config.DBHost,
-			config.DBPort,
-			config.DBName,
-			config.SSLMode,
+			config.DB_USER,
+			config.DB_PASSWORD,
+			config.DB_HOST,
+			config.DB_PORT,
+			config.DB_NAME,
+			config.DB_SSLMODE,
 		)
 
 		// Create a new connection pool
@@ -67,17 +67,17 @@ func InitializePostgresPool(ctx context.Context, config PostgresConfig) *pgxpool
 // PingDB pings the database to check if the connection is alive.
 func PingDB(ctx context.Context) error {
 	if pgPoolInstance == nil {
-		return fmt.Errorf("Postgres pool is not initialized")
+		return fmt.Errorf("postgres pool is not initialized")
 	}
 
 	conn, err := pgPoolInstance.Acquire(ctx)
 	if err != nil {
-		return fmt.Errorf("Failed to acquire connection: %v", err)
+		return fmt.Errorf("failed to acquire connection: %v", err)
 	}
 	defer conn.Release()
 
 	if err := conn.Conn().Ping(ctx); err != nil {
-		return fmt.Errorf("Failed to ping database: %v", err)
+		return fmt.Errorf("failed to ping database: %v", err)
 	}
 
 	fmt.Println("Database connection is alive")
